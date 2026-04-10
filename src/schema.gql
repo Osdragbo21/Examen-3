@@ -1,0 +1,56 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Muestra {
+  id: Int!
+  senal: Senal!
+  n: Int!
+  valor: Float!
+  timestamp: Int!
+}
+
+type ResultadoLaplace {
+  id: Int!
+  senal: Senal!
+  valor_z: Float!
+  resultado: Float!
+  fecha_calculo: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Senal {
+  id: Int!
+  nombre: String!
+  amplitud: Float!
+  decaimiento: Float!
+  tipo: String!
+  muestras: [Muestra!]
+  resultados: [ResultadoLaplace!]
+}
+
+type Query {
+  senales: [Senal!]!
+  senal(id: Int!): Senal!
+}
+
+type Mutation {
+  createSenale(createSenaleInput: CreateSenaleInput!): Senal!
+  updateSenale(updateSenaleInput: UpdateSenaleInput!): Senal!
+  removeSenale(id: Int!): Senal!
+}
+
+input CreateSenaleInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateSenaleInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
